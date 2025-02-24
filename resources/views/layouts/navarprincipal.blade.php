@@ -15,6 +15,7 @@
     <div class="titulosNav">
         <h3>Gestion de Archivos</h3>
         <p>Aplicativo para gestionar archivos</p>
+        
     </div>
 </header>
 @yield('content')
