@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css',
                     'resources/css/styleLogin.css',
+                    'resources/css/styleRecuperarcontraseña.css',
                     'resources/js/app.js',
                     'resources/js/auth.js',
                     ],

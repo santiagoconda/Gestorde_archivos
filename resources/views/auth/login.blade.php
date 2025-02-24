@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,66 +12,43 @@
 </head>
 @extends('layouts.navarprincipal')
 @section('content')
-<body>
-    <div id="loginForm" class="divPadre">
-        <div class="imagenCont">
-            
+
+    <body class="formulario">
+        <div class="container">
+            <input id="signup_toggle" type="checkbox">
+
+            <!-- Contenedor de formularios -->
+            <div class="form_wrapper">
+                <!-- Formulario de inicio de sesión -->
+                <form action="{{ route('login.usuarios') }}" method="POST" class="form form_front">
+                    @csrf
+                    <div class="form_details">BIENVENIDO DE NUEVO</div>
+                    <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>
+                    <input type="password" name="password" class="input" placeholder="Contraseña" required>
+                    <button class="btn" type="submit">Iniciar Sesión</button>
+                    <span class="switch">
+                        ¿No tienes cuenta?
+                        <label for="signup_toggle" class="signup_tog">Regístrate</label>
+                    </span>
+                    <a href="{{ route('password.request') }}">¿Has olvidado tu contraseña?</a>
+                </form>
+
+                <!-- Formulario de registro -->
+                <form action="{{ route('registrar.usuarios') }}" method="POST" class="form form_back">
+                    @csrf
+                    <div class="form_details">REGISTRARME</div>
+                    <input type="text" name="name" class="input" placeholder="Nombre Usuario" required>
+                    <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>
+                    <input type="password" name="password" class="input" placeholder="Contraseña" required>
+                    <button class="btn" type="submit">Registrarme</button>
+                    <span class="switch">
+                        ¿Ya tienes una cuenta?
+                        <label for="signup_toggle" class="signup_tog">Iniciar sesión</label>
+                    </span>
+                </form>
+            </div>
         </div>
-       
-        <form class="divHijo" action="{{route('login.usuarios')}}" method="POST">
-            <div class="bienvenido_de_nuevo">
-                <h3>BIENVENIDO DE NUEVO</h3>
-            </div>
-            @csrf
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Correo electronico</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <div>
-                <label for="inputPassword5" class="form-label">Contraseña</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-            </div>
-              <a href="{{route('password.request')}}">Has olvidado tu contraseña?</a>
-            <div class="divNieto">
-                <button type="submit">Inicaiar sesión</button>
-                <button id="toggleButton" onclick="formsDinamicos('register')">¿No tienes cuenta? Registrate</button>
-
-            </div>
-        </form>
- 
-    </div>
-    <br>
-    
-    
-    <div id="registerForm"style="display:none;"  class="divHijo">
-        <h3>Register</h3>
-        <form action="{{route('registrar.usuarios')}}" method="POST">
-            @csrf
-            <input type="text" name="name" placeholder="Username">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit">Registrarse</button>
-        </form>
-    </div>
-    <br>
-
-</body>
+    </body>
 @endsection
 
 </html>
-<script>
-    function formsDinamicos(formType) {
-    console.log('desde vite la funcion a sido llamada' );
-    if (formType === 'login') {
-        document.getElementById('loginForm').style.display = 'block';
-        document.getElementById('registerForm').style.display = 'none';
-        document.getElementById('toggleButton').innerText = '¿No tienes cuenta? Regístrate';
-    } else if (formType === 'register') {
-        document.getElementById('loginForm').style.display = 'none';
-        document.getElementById('registerForm').style.display = 'block';
-        document.getElementById('toggleButton').innerText = '¿Ya tienes cuenta? Inicia sesión';
-    }
-}
-
-
-</script>
