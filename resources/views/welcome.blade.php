@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>pruebas</title>
+    <title>Subir Archivo</title>
 </head>
 <body>
-    <div>
-        @foreach ($roles as $item)
-            <p>{{$item->nombre}}</p>
-        @endforeach
-        
-    </div>
+
+    <h2>Subir Archivo</h2>
+    
+    <form action="{{route('subir')}}" method="POST" enctype="multipart/form-data">
+        <!-- Token de seguridad CSRF -->
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf" required>
+    <br>
+
+        <label for="archivo_id">ID del archivo:</label>
+        <input type="number" name="archivo_id" id="archivo_id" required>
+        <br><br>
+
+        <label for="usuarios_id">ID del usuario:</label>
+        <input type="number" name="usuarios_id" id="usuarios_id" required>
+        <br><br>
+
+        <button type="submit">Subir Archivo</button>
+    </form>
+
 </body>
 </html>

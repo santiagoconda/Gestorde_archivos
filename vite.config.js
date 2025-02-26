@@ -7,6 +7,7 @@ export default defineConfig({
             input: ['resources/css/app.css',
                     'resources/css/styleLogin.css',
                     'resources/css/styleRecuperarcontraseña.css',
+                    'resources/css/subirarchivos.css',
                     'resources/js/app.js',
                     'resources/js/auth.js',
                     ],

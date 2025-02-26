@@ -1,0 +1,11 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+   
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

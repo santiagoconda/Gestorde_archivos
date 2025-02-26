@@ -1,0 +1,79 @@
+.formulario {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  background-image: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  /* Ajusta el tamaño según necesites */
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+input {
+  width: 245px;
+  height: 45px;
+  color: black;
+  outline: none;
+  transition: 0.35s;
+  padding: 0px 7px;
+  padding-top: 8px;
+  background-color: #0f3b53e8;
+  border-radius: 6px;
+  border: none;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.493);
+  padding: 65px 45px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgb(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.form-select {
+  width: 400px;
+  background-color: #0f3b53e8
+}
+
+.form_front {
+  z-index: 2;
+}
+
+input {
+  width: 400px;
+  color: white;
+}
