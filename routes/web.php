@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\authController;
+use App\Http\Controllers\archivosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,7 @@ Route::get('/restablecer/contraseña', [authController::class, 'mostrarFormulari
 Route::post('/enviar/correo', [authController::class, 'enviarCorreoResetPassword'])->name('password.email');
 Route::get('/restablecer/contraseña/{token}', [authController::class, 'mostrarFormularioReset'])->name('password.reset');
 Route::post('/restablecer', [authController::class, 'resetPassword'])->name('password.update');
+
 
 
  
