@@ -25,7 +25,7 @@
         </form>
     </div> --}}
 
-        <div class="container">
+        {{-- <div class="container">
             <input id="signup_toggle" type="checkbox">
 
             <div class="form_front">
@@ -39,6 +39,22 @@
                         <button type="submit" class="btn">Restablecer contraseña</button>
 
                     </div>
+                </form>
+            </div>
+        </div> --}}
+
+        <div class="container">
+            <input id="signup_toggle" type="checkbox">
+
+          
+            <div class="form_wrapper">
+                <form action="{{ route('password.update') }}" method="POST" class="form form_front">
+                    <div class="form_details">Restablecer Contraseña</div>
+                        <input type="email" name="email" class="input" placeholder="Correo Electronico">
+                        <input type="password" name="password" class="input" placeholder="Nueva contraseña">
+                        <button type="submit" class="btn">Restablecer contraseña</button>
+                   
+                    
                 </form>
             </div>
         </div>

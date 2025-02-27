@@ -10,8 +10,16 @@
     <h2>Subir Archivo</h2>
     
     <form action="{{route('subir')}}" method="POST" enctype="multipart/form-data">
-        <!-- Token de seguridad CSRF -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <div>
+            <input type="text" placeholder="area" name="area_nombre">
+            <br><br>
+        </div>
+        <div>
+            <input type="text" placeholder="descirpcion" name="archivo_descripcion">
+        </div>
+        <br><br>
 
         <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf" required>
     <br>

@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use App\Models\User;
+use App\Models\rol;
 class authController extends Controller
 {
     public function index()
-    {
-        return view('auth.login');
+    {        
+        $roles = rol::all();
+        return view('auth.login', compact('roles'));
     }
+
 
     public function registrarUsuarios(Request $request)
     {
@@ -20,11 +23,13 @@ class authController extends Controller
         $validate = $request->validate([
             'email' => 'required|email|unique:users',
             'name' => 'required|string|max:255',
+            'rol_id' => 'required',
             'password' => 'required|min:6'
         ]);
         $user = User::firstOrCreate(
             ['email' => $request->email],
             [   'name' => $request->name,
+                'rol_id' => $request->rol_id,
                 'password' => Hash::make($request->password)
             ]
         );

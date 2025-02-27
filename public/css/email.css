@@ -1,0 +1,86 @@
+    .form_email {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        background: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
+        font-family: 'Poppins', sans-serif;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+/* Contenedor principal */
+.form_wrapper {
+    background-color: rgba(255, 255, 255, 0.493);
+    padding: 2rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Desenfoque del fondo */
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Título */
+.form_details {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #2C3E50;
+    font-weight: bold;
+}
+
+/* Input estilizado */
+input[type="email"] {
+    width: 80%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #154360; /* Fondo oscuro */
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input::placeholder {
+    color: white;
+    opacity: 0.7;
+}
+
+/* Botón estilizado */
+.btn {
+    width: 80%;
+    padding: 1rem;
+    background: #154360;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #1A5276; /* Color más claro al pasar el cursor */
+}
+
+/* Enlace adicional */
+.link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #2C3E50;
+}
+
+.link a {
+    text-decoration: none;
+    color: #154360;
+    font-weight: bold;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}

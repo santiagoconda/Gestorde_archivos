@@ -1,11 +1,61 @@
-.formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-   
-}
-.contenedor{
+body {
+    background-image: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .form {
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.493);
+    padding: 30px;
+    border-radius: 10px;
+    margin: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form input,
+  .form select {
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #0f3b53e8;
+    color: white;
+  }
+  
+  .form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  ::placeholder{
+    color: black;
+  }
+  .form .btn {
+    background-color: #0f3b53e8;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    transition: 0.3s;
+  }
+  
+  .form .btn:hover {
+    background-color: #00a99e9f;
+  
+  }
