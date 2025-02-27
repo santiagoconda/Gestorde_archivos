@@ -13,20 +13,31 @@
 </head>
 
 
-@extends('layouts.navarprincipal')
-@section('content')
-<body >
-<div id="enviarCorreo" class="form_email">
-        <div class="form_wrapper">
-            <div class="form_details">Recupera tu Contraseña</div>
-            <form action="{{ route('password.email') }}" method="POST">
-                @csrf
-                <input type="email" name="email" placeholder="Correo Electrónico" required>
-                <button class="btn" type="submit">Restablecer Contraseña</button>
-            </form>
-        </div>
-    </div>
-</body>
-@endsection
 
+
+
+
+    <body class="formulario">
+        @extends('layouts.navarprincipal')
+        @section('content')
+        <div class="container">
+            <input id="signup_toggle" type="checkbox">
+
+            <div class="form_wrapper">
+        
+                    <form action="{{ route('password.email') }}" method="POST" class="form form_front">
+                        @csrf
+                        <div class="form_details">BIENVENIDO DE NUEVO emaill</div>
+                        <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>
+                        <input type="password" name="password" class="input" placeholder="Contraseña" required>
+                        <button class="btn" type="submit">Restablecer Contraseña</button>
+                        
+        
+                    </form>
+           
+            </div>
+        </div>
+        @endsection
+    </body>
+   
 </html>

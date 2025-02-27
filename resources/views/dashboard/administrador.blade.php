@@ -33,7 +33,7 @@
                 <tr>
                 <td>{{$archivo->nombre_archivo}}</td>
                 <td>{{$archivo->tipo_archivo}}</td>
-                <td>{{$archivo->users->name}}</td>
+                <td>{{$archivo->user_id}}</td>
                 <td>{{$archivo->fecha_subida}}</td>
                 <td>area</td>
                 <td><button class="btn btn-success">Descargar</button> <button class="btn btn-primary">Actualizar</button> <button class="btn btn-danger">Eliminar</button></td>
