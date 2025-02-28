@@ -35,26 +35,7 @@
                     <a href="{{ route('password.request') }}">¿Has olvidado tu contraseña?</a>
                 </form>
 
-                <!-- Formulario de registro -->
-                <form action="{{ route('registrar.usuarios') }}" method="POST" class="form form_back">
-                    @csrf
-                    <div class="form_details">REGISTRARME</div>
-                    <input type="text" name="name" class="input" placeholder="Nombre Usuario" required>
-                    <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>
-
-                    <select class="form-select" id="rol_id" name="rol_id" required>
-                        <option value="">Selecciona un  rol</option>
-                        @foreach ($roles as $item)
-                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                        @endforeach
-                    </select>
-                    <input type="password" name="password" class="input" placeholder="Contraseña" required>
-                    <button class="btn" type="submit">Registrarme</button>
-                    <span class="switch">
-                        ¿Ya tienes una cuenta?
-                        <label for="signup_toggle" class="signup_tog">Iniciar sesión</label>
-                    </span>
-                </form>
+               
             </div>
         </div>
     </body>

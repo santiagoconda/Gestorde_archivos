@@ -1,0 +1,9 @@
+.tdacciones{
+    display: flex;
+    justify-content: space-between; 
+    flex-direction: column;
+}
+
+i{
+    padding: 90px;
+}

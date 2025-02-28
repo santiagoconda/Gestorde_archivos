@@ -9,6 +9,7 @@ export default defineConfig({
                     'resources/css/styleRecuperarcontraseña.css',
                     'resources/css/subirarchivos.css',
                     'resources/css/administracion.css',
+                    'resources/css/editararchivos.css',
                     'resources/js/app.js',
                     'resources/js/auth.js',
                     'resources/js/dashboard.js',

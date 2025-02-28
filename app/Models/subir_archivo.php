@@ -18,7 +18,7 @@ public $timestamps = false;
 
 ];
 public function archivos(){
-    return $this->hasMany(archivo::class,'archivo_id');
+    return $this->belongsTo(archivo::class, 'archivo_id');
 }
 
 public function users(){

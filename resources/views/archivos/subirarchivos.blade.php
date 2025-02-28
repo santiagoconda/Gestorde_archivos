@@ -28,9 +28,7 @@
                 </div>
                 <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf" required>
 
-                <label for="archivo_id">ID del archivo:</label>
-        <input type="number" name="archivo_id" id="archivo_id" required>
-        <br><br>
+   
 
         <label for="usuarios_id">ID del usuario:</label>
         <input type="number" name="usuarios_id" id="usuarios_id" required>

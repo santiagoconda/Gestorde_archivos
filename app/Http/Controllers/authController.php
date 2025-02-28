@@ -15,6 +15,12 @@ class authController extends Controller
         $roles = rol::all();
         return view('auth.login', compact('roles'));
     }
+    public function vistaresgistrar()
+    {       
+       
+        $roles = rol::all();
+        return view('auth.registroUsuarios',compact('roles'));
+    }
 
 
     public function registrarUsuarios(Request $request)
@@ -35,7 +41,7 @@ class authController extends Controller
         );
         // dd($user);
         Auth::login($user);
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
 
@@ -63,7 +69,7 @@ class authController extends Controller
     }
     
     public function enviarCorreoResetPassword(Request $request){
-        // dd($request);
+        dd($request);
         $request->validate([
             'email' => 'required|email|exists:users,email',
         ]);
@@ -80,9 +86,7 @@ class authController extends Controller
         }
     }
 
-    public function mostrarFormularioEmail(){
-        return view('auth.email');
-    }
+   
 
     public function mostrarFormularioReset(Request $request, $token=null){
         return view('auth.resetPassword')->with(

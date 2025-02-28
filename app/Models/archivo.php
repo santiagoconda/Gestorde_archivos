@@ -13,10 +13,10 @@ class archivo extends Model
     'users_id',
 ];
 public function areas(){
-    return $this->hashMany(area::class, 'area_id');
+    return $this->belongsTo(area::class, 'area_id');
 }
 
 public function users(){
-    return $this->hasMany(User::class,'users_id');
+    return $this->belongsTo(User::class,'users_id');
 }
 }
