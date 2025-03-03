@@ -57,9 +57,9 @@ class authController extends Controller
             if(Hash::check($request->password, $user->password)){
                 Auth::login($user);
                 $request->session()->regenerate();
-                return redirect()->route('/');
+                return redirect()->route('ver.archivos');
             }else{
-                return back()->with('fail', 'Contraseña incorrecta');
+                return back()->withErrors(['password' => 'Contraseña incorrecta']);
             }
         }else{
             return back()->withErrors([
@@ -69,7 +69,7 @@ class authController extends Controller
     }
     
     public function enviarCorreoResetPassword(Request $request){
-        dd($request);
+        // dd($request->toArray());
         $request->validate([
             'email' => 'required|email|exists:users,email',
         ]);
@@ -94,19 +94,31 @@ class authController extends Controller
         );
     }
 
+    public function mostrarFormularioEmail(){
+        return view('auth.email');
+    }
+
     public function resetPassword(Request $request){
-        // dd($request);
+        // dd($request->toArray());
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8',
-            'token' => 'required',
+            'token' => $request->token,
         ]);
-        $response = Password::reset($request->only('email', 'password', 'token'),
-        function ($user, $password){
-            $user->forceFill([
-                'password' => bcrypt($password)
-            ])->save();
-        }
+        $response = Password::reset(
+            $request->only('email', 'password', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password),
+                    'remember_token' => Str::random(60), 
+                ])->save();
+    
+                event(new PasswordReset($user)); 
+    
+                if (method_exists($user, 'tokens')) {
+                    $user->tokens()->delete(); 
+                }
+            }
         );
         return $response == Password::PASSWORD_RESET
         ? redirect()->route('login')->with('status', 'Tu contraseña ha sido restablecida con éxito.')

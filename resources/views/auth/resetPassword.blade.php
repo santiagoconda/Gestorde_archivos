@@ -13,16 +13,19 @@
 
 </head>
 
-@extends('layouts.navarprincipal')
-@section('content')
+@extends('layouts.prueba')
+    @section('content')
 
     <body class="formulary">
+    
+
         <div class="containers">
             <input id="signup_toggle" type="checkbox">
 
           
             <div class="form_wrapp">
                 <form action="{{ route('password.update') }}" method="POST" class="form formm_front">
+                    @csrf
                     <div class="form_detalles">Restablecer Contraseña</div>
                         <input type="email" name="email" class="input" placeholder="Correo Electronico">
                         <input type="password" name="password" class="input" placeholder="Nueva contraseña">
@@ -30,6 +33,7 @@
                 </form>
             </div>
         </div>
+        
     </body>
-@endsection
+    @endsection
 </html>

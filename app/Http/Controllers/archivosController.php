@@ -84,6 +84,71 @@ class archivosController extends Controller
         return Storage::download($rutaArchivo, $archivo->nombre_archivo);
 
     }
+
+    public function eliminarArchivo(string $id){
+      
+        $archivo = subir_archivo::findOrFail($id);
+        if($archivo){
+            $archivo->delete();
+            return redirect()->route('ver.archivos')->with('success','archivo eliminado correctamente');
+        }
+        return response()->json(['message'=>'archivo no encotrado']);
+
+    }
+
+   public function edit(string $id){
+    $users = User::all();
+    $Areas = area::all();
+    $Archv = subir_archivo::with(['users', 'archivos.areas',])->find($id);
+    return view('dashboard.editar', compact('Archv','users','Areas'));
+
+   }
+
+
+//     public function actualizarArchivo(Request $request, $id)
+// {
+//     $request->validate([
+//         'nombre_archivo' => 'required|string|max:255',
+//         'archivo' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+//         'archivo_descripcion' => 'required|string|max:255',
+//         'area_id' => 'required|exists:,id',
+//         'usuarios_id' => 'required|exists:users,id',
+//     ]);
+
+//     $archivo = subir_archivo::findOrFail($id);
+
+//     if ($request->hasFile('archivo')) {
+//         if (Storage::exists($archivo->ruta_archvo)) {
+//             Storage::delete($archivo->ruta_archvo);
+//         }
+
+//         $nuevoArchivo = $request->file('archivo');
+//         $nombreArchivo = time() . '_' . $nuevoArchivo->getClientOriginalName();
+//         $rutaArchivo = $nuevoArchivo->storeAs('public/archivos', $nombreArchivo);
+
+//         $archivo->update([
+//             'nombre_archivo' => $nombreArchivo,
+//             'ruta_archvo' => $rutaArchivo,
+//             'tipo_archivo' => $nuevoArchivo->getClientMimeType(),
+//             'fecha_subida' => now(),
+//             'usuarios_id' => $request->usuarios_id,
+//         ]);
+//     } else {
+//         $archivo->update([
+//             'nombre_archivo' => $request->nombre_archivo,
+//             'archivo_descripcion' => $request->archivo_descripcion,
+//             'usuarios_id' => $request->usuarios_id,
+//         ]);
+//     }
+
+//     return response()->json(['message' => 'Archivo actualizado correctamente', 'archivo' => $archivo]);
+// }
+
+
+
+
+
+
     public function visualizarArchivo($id){
         $archivo = subir_archivo::findOrFail($id);
         $rutaArchivo = $archivo->ruta_archvo;
@@ -91,9 +156,59 @@ class archivosController extends Controller
             return response()->json(['message' => 'Archivo no encontrado'], 404);
 
         }
-        $urlArchivo = Storage::url($rutaArchivo);
+        $urlArchivo = Storage::url($archivo->ruta_archvo);
+        // dd($urlArchivo);
         return response()->json(['url' => $urlArchivo]);
+       
     }
+    public function actualizarDatos(Request $request)
+    {
+        // Obtener los IDs desde la petición
+        $area_id = $request->input('area_id');
+        $archivo_id = $request->input('archivo_id');
+        $subir_archivo_id = $request->input('subir_archivo_id');
+    
+        // Validar la solicitud
+        $request->validate([
+            'area_nombre' => 'required|string|max:255',
+            'archivo_descripcion' => 'required|string|max:255',
+            'archivo' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
+            'usuarios_id' => 'required',
+        ]);
+    
+        // Buscar y actualizar el área
+        $area = area::findOrFail($area_id);
+        $area->update([
+            'nombre' => $request->area_nombre,
+        ]);
+    
+        // Buscar y actualizar el archivo
+        $archivoModel = archivo::findOrFail($archivo_id);
+        $archivoModel->update([
+            'descripcion' => $request->archivo_descripcion,
+            'users_id' => $request->usuarios_id,
+        ]);
+    
+        // Si se ha subido un nuevo archivo, actualizar la información
+        if ($request->hasFile('archivo')) {
+            $archivo = $request->file('archivo');
+            $nombreArchivo = time() . '_' . $archivo->getClientOriginalName();
+            $rutaArchivo = $archivo->storeAs('public/archivos', $nombreArchivo);
+    
+            // Buscar y actualizar la entrada en subir_archivo
+            $subirArchivo = subir_archivo::findOrFail($subir_archivo_id);
+            $subirArchivo->update([
+                'nombre_archivo' => $nombreArchivo,
+                'ruta_archvo' => $rutaArchivo,
+                'fecha_subida' => now(),
+                'tipo_archivo' => $archivo->getClientMimeType(),
+                'usuarios_id' => $request->usuarios_id,
+            ]);
+        }
+    
+        return response()->json(['message' => 'Datos actualizados exitosamente']);
+    }
+    
    
 
  

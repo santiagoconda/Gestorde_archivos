@@ -1,0 +1,111 @@
+.contenedors {
+  width: 90%; /* Cambiado a porcentaje para que sea más flexible */
+  max-width: 400px; /* Limita el ancho máximo */
+  max-height: 680px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 50px; /* Reducido para pantallas más pequeñas */
+  background-color: white;
+  margin: 30px auto;
+}
+
+.imput {
+  width: 100%;
+  min-height: 45px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  padding: 10px;
+  background-color: #0f3b53e8;
+  border-radius: 6px;
+  border: 1px solid #0f3b53e8;
+  font-size: 16px;
+  margin: 10px auto;
+}
+
+.form-selecciona {
+  width: 100%; /* Cambiado a porcentaje para que sea más flexible */
+  max-width: 245px; /* Limita el ancho máximo */
+  min-height: 45px;
+  margin: 20px auto; /* Reducido para pantallas más pequeñas */
+  background-color: #0f3b53e8;
+  border: 1px solid #0f3b53e8;
+  color: black;
+  border-radius: 6px;
+  color: white;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  width: 100%;
+  margin: 5px;
+}
+
+.boton {
+  text-align: center;
+  padding: 12px;
+  background-color: #0f3b53e8;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 20px auto; /* Reducido para pantallas más pequeñas */
+}
+
+.boton:hover {
+  background-color: #0f3b53e8;
+}
+
+.switch {
+  font-size: 14px;
+  color: black;
+}
+
+.switch .signup_tog {
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #0f3b53e8;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .contenedors {
+    margin-top: 30px;
+    padding: 15px;
+  }
+
+  .imput, .form-selecciona, .boton {
+    font-size: 14px;
+  }
+
+  .boton {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedors {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .imput, .form-selecciona, .boton {
+    font-size: 12px;
+  }
+
+  .boton {
+    padding: 8px;
+  }
+}

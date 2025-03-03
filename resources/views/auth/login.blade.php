@@ -26,7 +26,13 @@
                     @csrf
                     <div class="form_details">BIENVENIDO DE NUEVO</div>
                     <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>
+                    @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <input type="password" name="password" class="input" placeholder="Contraseña" required>
+                    @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <button class="btn" type="submit">Iniciar Sesión</button>
                     <span class="switch">
                         ¿No tienes cuenta?

@@ -1,34 +1,12 @@
-
-
-.headePadre{
-    color: white;
-    display: grid;
-    grid-template-columns: 3fr 4fr;
-    height: 150px;
-    background-color: #182530;
-}
-
-.verticalAmarillo{
-    width: 500px;
-    height: 150px;
-}
-.titulosNav{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-}
-
-/* From Uiverse.io by Rohankumar620 */
-
-.formulario {
+body {
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 5rem; /* Cambiado a rem para mejor escalabilidad */
   background-image: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 1rem; /* Añadido padding para mejor espaciado */
 }
 
 .container {
@@ -36,17 +14,19 @@
   justify-content: center;
   align-items: center;
   perspective: 1000px; /* Efecto 3D */
+  margin: 2rem auto; /* Cambiado a rem para mejor escalabilidad */
+  padding: 1rem;
 }
 
 /* Contenedor que agrupa ambos formularios y permite la rotación */
 .form_wrapper {
   position: relative;
-  width: 350px;
-  height: 400px;
+  width: 100%; /* Cambiado a porcentaje para flexibilidad */
+  max-width: 350px; /* Limita el ancho máximo */
+  height: auto; /* Altura automática para adaptarse al contenido */
   transform-style: preserve-3d;
   transition: transform 1s ease;
   color: black;
-  
 }
 
 /* Estilos base para los formularios */
@@ -58,11 +38,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem; /* Cambiado a rem para mejor escalabilidad */
   background-color: rgba(255, 255, 255, 0.493);
-  padding: 65px 45px;
+  padding: 2rem 1.5rem; /* Cambiado a rem para mejor escalabilidad */
   border-radius: 8px;
-  box-shadow: 0 6px 15px rgb(0, 0, 0);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
   backface-visibility: hidden;
 }
 
@@ -83,12 +63,13 @@
 
 /* Estilos para los inputs */
 .input {
-  width: 245px;
+  width: 100%; /* Cambiado a porcentaje para flexibilidad */
+  max-width: 245px; /* Limita el ancho máximo */
   min-height: 45px;
   color: black;
   outline: none;
   transition: 0.35s;
-  padding: 0px 7px;
+  padding: 0 0.5rem; /* Cambiado a rem para mejor escalabilidad */
   background-color: #0f3b53e8;
   border-radius: 6px;
   border: none;
@@ -96,6 +77,7 @@
 
 .input::placeholder {
   color: white;
+  opacity: 0.8; /* Añadido para mejor legibilidad */
 }
 
 .input:focus {
@@ -104,17 +86,25 @@
 
 /* Botón */
 .btn {
-  padding: 10px 35px;
+  padding: 0.625rem 2.1875rem; /* Cambiado a rem para mejor escalabilidad */
   background-color: #0f3b53e8;
   border-radius: 6px;
   color: white;
-  font-size: 16px;
+  font-size: 1rem; /* Cambiado a rem para mejor escalabilidad */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0c2d3f; /* Cambio de color al hacer hover */
 }
 
 /* Texto de cambio de formulario */
 .switch {
-  font-size: 13px;
+  font-size: 0.8125rem; /* Cambiado a rem para mejor escalabilidad */
   color: rgb(0, 0, 0);
+  text-align: center; /* Añadido para mejor alineación */
 }
 
 .switch .signup_tog {
@@ -128,3 +118,135 @@
   display: none;
 }
 
+/* Imágenes */
+img {
+  width: 100%; /* Cambiado a porcentaje para flexibilidad */
+  max-width: 100px; /* Limita el ancho máximo */
+  height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Footer */
+footer {
+  background: #032840;
+  color: white;
+  padding: 1rem; /* Añadido padding para mejor espaciado */
+  text-align: center;
+}
+
+/* Header */
+.header {
+  background-color: #032840;
+  color: white;
+  padding: 1rem; /* Cambiado a rem para mejor escalabilidad */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* Cambiado a rem para mejor escalabilidad */
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #ffffff;
+  padding: 1rem; /* Cambiado a rem para mejor escalabilidad */
+}
+
+.sidebar h4 {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #F7C221;
+  padding-bottom: 0.625rem; /* Cambiado a rem para mejor escalabilidad */
+}
+
+.sidebar-link {
+  color: #0F3B53;
+  text-decoration: none;
+  margin: 0.3125rem 0; /* Cambiado a rem para mejor escalabilidad */
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-link:hover {
+  background-color: #F7C221;
+  color: #0F3B53;
+  padding-left: 1.25rem; /* Cambiado a rem para mejor escalabilidad */
+}
+
+.sidebar-link i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Navbar móvil */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #333 !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #F7C221 !important;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  body {
+    gap: 3rem; /* Reducido el gap para pantallas más pequeñas */
+  }
+
+  .form {
+    padding: 1.5rem 1rem; /* Reducido el padding para pantallas más pequeñas */
+  }
+
+  .input {
+    min-height: 40px; /* Reducido la altura para pantallas más pequeñas */
+  }
+
+  .btn {
+    padding: 0.5rem 1.5rem; /* Reducido el padding para pantallas más pequeñas */
+  }
+
+  .header {
+    flex-direction: column; /* Cambiado a columna para mejor alineación */
+    gap: 0.5rem; /* Reducido el gap para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    gap: 2rem; /* Reducido el gap para pantallas muy pequeñas */
+  }
+
+  .form {
+    padding: 1rem 0.75rem; /* Reducido el padding para pantallas muy pequeñas */
+  }
+
+  .input {
+    min-height: 35px; /* Reducido la altura para pantallas muy pequeñas */
+  }
+
+  .btn {
+    padding: 0.5rem 1rem; /* Reducido el padding para pantallas muy pequeñas */
+  }
+
+  .switch {
+    font-size: 0.75rem; /* Reducido el tamaño de la fuente para pantallas muy pequeñas */
+  }
+
+  .header {
+    padding: 0.75rem; /* Reducido el padding para pantallas muy pequeñas */
+  }
+}
