@@ -12,6 +12,7 @@ class authController extends Controller
 {
     public function index()
     {        
+        
         $roles = rol::all();
         return view('auth.login', compact('roles'));
     }
@@ -25,7 +26,7 @@ class authController extends Controller
 
     public function registrarUsuarios(Request $request)
     {
-        // dd($request -> all());
+        // dd($request->toArray());
         $validate = $request->validate([
             'email' => 'required|email|unique:users',
             'name' => 'required|string|max:255',
@@ -45,6 +46,30 @@ class authController extends Controller
     }
 
 
+    // public function login(Request $request)
+    // {
+    //     // dd($request);
+    //     $validate = $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
+    //     $user = User::where('email', $request->email)->first();
+    //     if($user){
+    //         if(Hash::check($request->password, $user->password)){
+    //             Auth::login($user);
+    //             $request->session()->regenerate();
+    //             return redirect()->route('ver.archivos');
+    //         }else{
+    //             return back()->withErrors(['password' => 'Contraseña incorrecta']);
+    //         }
+    //     }else{
+    //         return back()->withErrors([
+    //             'email' => 'El email no existe'
+    //         ])->withInput();
+    //     }
+    // }
+
+
     public function login(Request $request)
     {
         // dd($request);
@@ -57,7 +82,15 @@ class authController extends Controller
             if(Hash::check($request->password, $user->password)){
                 Auth::login($user);
                 $request->session()->regenerate();
-                return redirect()->route('ver.archivos');
+                switch($user->rol_id){
+                    case 1:
+                        return redirect()->route('ver.archivos');
+                    case 2:
+                        return redirect()->route('tablas.archivos');
+                    default:
+                    return redirect()->route('login'); 
+
+                }
             }else{
                 return back()->withErrors(['password' => 'Contraseña incorrecta']);
             }
@@ -67,6 +100,7 @@ class authController extends Controller
             ])->withInput();
         }
     }
+    
     
     public function enviarCorreoResetPassword(Request $request){
         // dd($request->toArray());
@@ -123,6 +157,14 @@ class authController extends Controller
         return $response == Password::PASSWORD_RESET
         ? redirect()->route('login')->with('status', 'Tu contraseña ha sido restablecida con éxito.')
         : back()->withErrors(['email' => 'El token de restablecimiento es inválido o ha expirado.']);
+    }
+
+    public function traerUsuarios(){
+
+
+        // $usuarios = User::with('roles')->get();
+        $usuarios = User::all();
+        return $usuarios;
     }
 
 }

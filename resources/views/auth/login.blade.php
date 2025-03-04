@@ -17,12 +17,10 @@
 
     <body class="formulario">
         <div class="container">
-            <input id="signup_toggle" type="checkbox">
-
             <!-- Contenedor de formularios -->
             <div class="form_wrapper">
                 <!-- Formulario de inicio de sesión -->
-                <form action="{{ route('login.usuarios') }}" method="POST" class="form form_front">
+                <form action="{{ route('login.usuarios') }}" method="POST" class="form_front">
                     @csrf
                     <div class="form_details">BIENVENIDO DE NUEVO</div>
                     <input type="email" name="email" class="input" placeholder="Correo Electrónico" required>

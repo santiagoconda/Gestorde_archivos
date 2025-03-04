@@ -13,18 +13,17 @@
 
 </head>
 
-@extends('layouts.prueba')
+@extends('layouts.navarprincipal')
     @section('content')
 
-    <body class="formulary">
+    <body class="">
     
 
         <div class="containers">
-            <input id="signup_toggle" type="checkbox">
 
           
             <div class="form_wrapp">
-                <form action="{{ route('password.update') }}" method="POST" class="form formm_front">
+                <form action="{{ route('password.update') }}" method="POST" class="formm_front">
                     @csrf
                     <div class="form_detalles">Restablecer Contraseña</div>
                         <input type="email" name="email" class="input" placeholder="Correo Electronico">

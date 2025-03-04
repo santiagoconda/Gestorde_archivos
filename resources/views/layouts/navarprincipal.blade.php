@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Navar</title>
-    @vite('resources/css/styleLogin.css')
+    @vite('resources/css/administracion.css')
 </head>
 
 <header class="headePadre">

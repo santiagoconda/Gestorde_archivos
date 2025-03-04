@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 5rem; /* Cambiado a rem para mejor escalabilidad */
-  background-image: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -34,7 +33,7 @@
   transition: all 1s ease;
 }
 
-.form .formm_front {
+ .formm_front {
   display: flex;
   flex-direction: column;
   justify-content: center;

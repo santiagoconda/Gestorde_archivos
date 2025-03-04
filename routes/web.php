@@ -29,12 +29,25 @@ Route::get('/ver/archivos', function () {
     $archivos = $archivosC->verArchivos();
     return view('tablas.tablaGeneral', compact('archivos'));
 })->name('tablas.archivos');
+//tabla Planeacion
+Route::get('/ver/archivos/planeacion', function () {
+    $archivosC = new archivosController();
+    $archivos = $archivosC->verArchivos();
+    return view('tablas.planeacion', compact('archivos'));
+})->name('tablas.archivos');
 
+// /tabla administracion
 Route::get('/dashboard', function () {
     $archivosC = new archivosController();
     $archivos = $archivosC->verArchivos();
     return view('dashboard.administrador',compact('archivos'));
     })->name('ver.archivos');
+//tablausarios
+Route::get('/usuarios',function(){
+    $usuariosC = new authController();
+    $usuarios = $usuariosC->traerUsuarios();
+    return view('tablas.usuarios',compact('usuarios'));
+})->name('añadir.usuarios');
 
 
 

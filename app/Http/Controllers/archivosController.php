@@ -68,8 +68,6 @@ class archivosController extends Controller
 
     public function verArchivos(){
         $archivos = subir_archivo::with('users','archivos.areas')->get();
-        // dd($archivos->toArray());
-        // return view('dashboard.administrador',compact('archivos'));
         return $archivos;
 
     }
@@ -103,50 +101,6 @@ class archivosController extends Controller
     return view('dashboard.editar', compact('Archv','users','Areas'));
 
    }
-
-
-//     public function actualizarArchivo(Request $request, $id)
-// {
-//     $request->validate([
-//         'nombre_archivo' => 'required|string|max:255',
-//         'archivo' => 'nullable|file|mimes:pdf,jpg,png|max:2048',
-//         'archivo_descripcion' => 'required|string|max:255',
-//         'area_id' => 'required|exists:,id',
-//         'usuarios_id' => 'required|exists:users,id',
-//     ]);
-
-//     $archivo = subir_archivo::findOrFail($id);
-
-//     if ($request->hasFile('archivo')) {
-//         if (Storage::exists($archivo->ruta_archvo)) {
-//             Storage::delete($archivo->ruta_archvo);
-//         }
-
-//         $nuevoArchivo = $request->file('archivo');
-//         $nombreArchivo = time() . '_' . $nuevoArchivo->getClientOriginalName();
-//         $rutaArchivo = $nuevoArchivo->storeAs('public/archivos', $nombreArchivo);
-
-//         $archivo->update([
-//             'nombre_archivo' => $nombreArchivo,
-//             'ruta_archvo' => $rutaArchivo,
-//             'tipo_archivo' => $nuevoArchivo->getClientMimeType(),
-//             'fecha_subida' => now(),
-//             'usuarios_id' => $request->usuarios_id,
-//         ]);
-//     } else {
-//         $archivo->update([
-//             'nombre_archivo' => $request->nombre_archivo,
-//             'archivo_descripcion' => $request->archivo_descripcion,
-//             'usuarios_id' => $request->usuarios_id,
-//         ]);
-//     }
-
-//     return response()->json(['message' => 'Archivo actualizado correctamente', 'archivo' => $archivo]);
-// }
-
-
-
-
 
 
     public function visualizarArchivo($id){

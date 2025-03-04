@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
 
-    @vite('resources/css/styleLogin.css')
+    @vite('resources/css/administracion.css')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -18,7 +18,7 @@
     
     
     <header class="headePadre">
-        <div>
+        <div class="imagen">
             <img class="verticalAmarillo"src="{{ asset('storage/logos/horizontal_full_color.png') }}" alt="verticalAmarillo" />
         </div>
         <div class="titulosNav">
@@ -37,12 +37,20 @@
                     <i class="fas fa-tachometer-alt me-2"></i> <!-- Logo de dashboard -->
                     Menú
                 </h4>
-                
                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.archivos') }}">
                     <i class="fas fa-calendar-plus me-2"></i> Inicio
                 </a>
-                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('login') }}">
+                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('añadir.usuarios') }}">
+                    <i class="fas fa-calendar-plus me-2"></i> Usuarios
+                </a>
+                
+                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.usuarios') }}">
                     <i class="fas fa-calendar-plus me-2"></i> Añadir ususarios
+                </a>
+
+                
+                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('index') }}">
+                    <i class="fas fa-calendar-plus me-2"></i> Subir Archivos
                 </a>
                 
             </div>
@@ -63,8 +71,16 @@
                                 <a href="{{ route('ver.archivos') }}" class="nav-link active">
                                     <i class="fas fa-home me-2"></i> Inicio
                                 </a>
-                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('login.usuarios') }}">
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('añadir.usuarios') }}">
+                                    <i class="fas fa-calendar-plus me-2"></i> Usuarios
+                                </a>
+                                
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.usuarios') }}">
                                     <i class="fas fa-calendar-plus me-2"></i> Añadir usuarios
+                                </a>
+
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('index') }}">
+                                    <i class="fas fa-calendar-plus me-2"></i> Subir Archivos
                                 </a>
                            
                             

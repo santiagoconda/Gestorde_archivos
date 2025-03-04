@@ -1,252 +1,110 @@
-body {
+.container {
   display: flex;
   flex-direction: column;
-  gap: 5rem; /* Cambiado a rem para mejor escalabilidad */
+  gap: 5rem; 
+}
+
+.formulario{
   background-image: url(https://th.bing.com/th/id/R.e71dad9835dc81e9c631736fcb31063a?rik=hw91lp9QCKB9kw&pid=ImgRaw&r=0);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 1rem; /* Añadido padding para mejor espaciado */
-}
+  background-attachment: fixed;
 
+}
+/* Estilo general del contenedor */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px; /* Efecto 3D */
-  margin: 2rem auto; /* Cambiado a rem para mejor escalabilidad */
-  padding: 1rem;
+  padding: 20px;
 }
 
-/* Contenedor que agrupa ambos formularios y permite la rotación */
+/* Estilo del formulario */
 .form_wrapper {
-  position: relative;
-  width: 100%; /* Cambiado a porcentaje para flexibilidad */
-  max-width: 350px; /* Limita el ancho máximo */
-  height: auto; /* Altura automática para adaptarse al contenido */
-  transform-style: preserve-3d;
-  transition: transform 1s ease;
-  color: black;
-}
+  padding: 30px;
+  border-radius: 10px;
+  background-color:rgba(255, 255, 255, 0.493);
 
-/* Estilos base para los formularios */
-.form {
-  position: absolute;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.25rem; /* Cambiado a rem para mejor escalabilidad */
-  background-color: rgba(255, 255, 255, 0.493);
-  padding: 2rem 1.5rem; /* Cambiado a rem para mejor escalabilidad */
-  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-  backface-visibility: hidden;
+  max-width: 400px;
+  text-align: center;
 }
 
-/* Estilos para el formulario de inicio de sesión */
-.form_front {
-  z-index: 2;
+/* Texto de bienvenida */
+.form_details {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: white;
 }
 
-/* Estilos para el formulario de registro */
-.form_back {
-  transform: rotateY(180deg);
-}
-
-/* Efecto de rotación cuando se activa el checkbox */
-.container #signup_toggle:checked + .form_wrapper {
-  transform: rotateY(180deg);
-}
-
-/* Estilos para los inputs */
+/* Estilos de los inputs */
 .input {
-  width: 100%; /* Cambiado a porcentaje para flexibilidad */
-  max-width: 245px; /* Limita el ancho máximo */
-  min-height: 45px;
-  color: black;
-  outline: none;
-  transition: 0.35s;
-  padding: 0 0.5rem; /* Cambiado a rem para mejor escalabilidad */
-  background-color: #0f3b53e8;
-  border-radius: 6px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
   border: none;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-.input::placeholder {
-  color: white;
-  opacity: 0.8; /* Añadido para mejor legibilidad */
-}
-
-.input:focus {
-  transform: scale(1.05);
-}
-
-/* Botón */
+/* Botón de inicio de sesión */
 .btn {
-  padding: 0.625rem 2.1875rem; /* Cambiado a rem para mejor escalabilidad */
-  background-color: #0f3b53e8;
-  border-radius: 6px;
-  color: white;
-  font-size: 1rem; /* Cambiado a rem para mejor escalabilidad */
+  width: 100%;
+  padding: 10px;
+  background: #0f3b53e8;
   border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s;
 }
 
 .btn:hover {
-  background-color: #0c2d3f; /* Cambio de color al hacer hover */
+  color: #fff;
+  background: #0f3b53e8;
 }
 
-/* Texto de cambio de formulario */
-.switch {
-  font-size: 0.8125rem; /* Cambiado a rem para mejor escalabilidad */
-  color: rgb(0, 0, 0);
-  text-align: center; /* Añadido para mejor alineación */
+/* Enlace para recuperar contraseña */
+a {
+  display: block;
+  margin-top: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
-.switch .signup_tog {
-  font-weight: 700;
-  cursor: pointer;
+a:hover {
   text-decoration: underline;
 }
 
-/* Ocultar checkbox */
-#signup_toggle {
-  display: none;
+/* Mensajes de error */
+.alert-danger {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
-/* Imágenes */
-img {
-  width: 100%; /* Cambiado a porcentaje para flexibilidad */
-  max-width: 100px; /* Limita el ancho máximo */
-  height: auto; /* Altura automática para mantener la proporción */
-}
-
-/* Footer */
-footer {
-  background: #032840;
+/* Estilo para el texto de registro */
+.switch {
+  display: block;
+  margin-top: 10px;
   color: white;
-  padding: 1rem; /* Añadido padding para mejor espaciado */
-  text-align: center;
+  font-size: 0.9rem;
 }
 
-/* Header */
-.header {
-  background-color: #032840;
-  color: white;
-  padding: 1rem; /* Cambiado a rem para mejor escalabilidad */
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem; /* Cambiado a rem para mejor escalabilidad */
-}
-
-/* Estilos generales */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8f9fa;
-}
-
-/* Sidebar */
-.sidebar {
-  background-color: #ffffff;
-  padding: 1rem; /* Cambiado a rem para mejor escalabilidad */
-}
-
-.sidebar h4 {
-  font-weight: 600;
-  color: #333;
-  border-bottom: 2px solid #F7C221;
-  padding-bottom: 0.625rem; /* Cambiado a rem para mejor escalabilidad */
-}
-
-.sidebar-link {
-  color: #0F3B53;
-  text-decoration: none;
-  margin: 0.3125rem 0; /* Cambiado a rem para mejor escalabilidad */
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.sidebar-link:hover {
-  background-color: #F7C221;
-  color: #0F3B53;
-  padding-left: 1.25rem; /* Cambiado a rem para mejor escalabilidad */
-}
-
-.sidebar-link i {
-  width: 20px;
-  text-align: center;
-}
-
-/* Navbar móvil */
-.navbar {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand {
-  font-weight: 600;
-}
-
-.nav-link {
-  color: #333 !important;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #F7C221 !important;
-}
-
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-  body {
-    gap: 3rem; /* Reducido el gap para pantallas más pequeñas */
-  }
-
-  .form {
-    padding: 1.5rem 1rem; /* Reducido el padding para pantallas más pequeñas */
-  }
-
-  .input {
-    min-height: 40px; /* Reducido la altura para pantallas más pequeñas */
-  }
-
-  .btn {
-    padding: 0.5rem 1.5rem; /* Reducido el padding para pantallas más pequeñas */
-  }
-
-  .header {
-    flex-direction: column; /* Cambiado a columna para mejor alineación */
-    gap: 0.5rem; /* Reducido el gap para pantallas más pequeñas */
-  }
-}
-
+/* Adaptabilidad para móviles */
 @media (max-width: 480px) {
-  body {
-    gap: 2rem; /* Reducido el gap para pantallas muy pequeñas */
+  .form_wrapper {
+    padding: 20px;
   }
-
-  .form {
-    padding: 1rem 0.75rem; /* Reducido el padding para pantallas muy pequeñas */
+  .form_details {
+    font-size: 1.3rem;
   }
-
-  .input {
-    min-height: 35px; /* Reducido la altura para pantallas muy pequeñas */
-  }
-
   .btn {
-    padding: 0.5rem 1rem; /* Reducido el padding para pantallas muy pequeñas */
-  }
-
-  .switch {
-    font-size: 0.75rem; /* Reducido el tamaño de la fuente para pantallas muy pequeñas */
-  }
-
-  .header {
-    padding: 0.75rem; /* Reducido el padding para pantallas muy pequeñas */
+    font-size: 1rem;
   }
 }

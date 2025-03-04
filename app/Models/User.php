@@ -47,7 +47,10 @@ class User extends Authenticatable
         ];
     }
 
-    public  function roles(){
-        return $this->hasMany(rol::class,'rol_id');
-    }
+    public function roles()
+{
+    return $this->hasMany(rol::class, 'rol_id');
+}
+
+    
 }

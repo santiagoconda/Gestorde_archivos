@@ -37,11 +37,8 @@
                 <label for="">Contraseña</label>
                 <input type="password" name="password" class="imput" placeholder="" required>
 
-                <button class="boton" type="submit">Registrarme</button>
-                <span class="switch">
-                    ¿Ya tienes una cuenta?
-                    <label for="signup_toggle" class="">Iniciar sesión</label>
-                </span>
+                <button class="boton" type="submit">Registrar</button>
+                
             </form>
         </div>
     </body>

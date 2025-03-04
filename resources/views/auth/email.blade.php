@@ -11,7 +11,7 @@
     {{-- @vite('resources/css/styleLogin.css')
     @vite('resources/js/auth.js') --}}
 </head> 
-@extends('layouts.prueba')
+@extends('layouts.navarprincipal')
 @section('content')
     <body class="formu">
         <div class="contenedori">

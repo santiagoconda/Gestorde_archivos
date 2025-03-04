@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Archivos</title>
+    <title>Usuarios</title>
 
     <!-- Estilos CSS de Bootstrap y DataTables -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -16,38 +16,43 @@
 </head>
 
 <body>
-    @extends('layouts.navarprincipal')
+@extends('layouts.prueba')
 @section('content')
 
     <div class="container mt-4">
-        <table id="tb_archivosgeneral" class="table table-striped table-bordered" style="width:100%">
+        <table id="tb_usuers" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>Nombre del Archivo</th>
-                    <th>Tipo de Archivo</th>
-                    <th>Fecha</th>
-                    <th>Area</th>
-                    <th>Acciones</th>
+                    <th>nombre de Usuario</th>
+                    <th>Correo Electronico</th>
+                    <th>Rol</th>
+                  
                 </tr>
             </thead>
             <tbody>
-                @foreach($archivos as $archivo) 
+                @foreach($usuarios as $item) 
 
                 
                     <tr>
-                        <td>{{$archivo->nombre_archivo}}</td>
-                        <td>{{$archivo->tipo_archivo}}</td>
-                        <td>{{$archivo->fecha_subida}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>roles</td>
+                        {{-- <td>{{$item->roles->nombre}}</td> --}}
                         
-                        <td>{{$archivo->archivos->areas->nombre}}</td>
-                        <td>
+                        {{-- <td>
                             <a href="{{ route('descargar.archivos', $archivo->id) }}" title="Descargar archivo" class="icons"> <i class="fa fa-download fa-lg text-success" aria-hidden="true"></i></a>                     
                             <a><i class="fa-solid fa-eye fa-lg text-primary" onclick="previsualizarArchivo({{ $archivo->id }})" title="Ver archivo" aria-hidden="true"></i></a>
-                            {{-- <a href="" ><i class="fa-solid fa-pen-to-square fa-lg text-warning" title="Actualizar archivo" aria-hidden="true"></i></a>
-                            <a href=""  ><i class="fa-solid fa-trash fa-lg text-danger" title="Eliminar archivo" aria-hidden="true"></i></a> --}}
-                             
+
+                            <a href="{{route('editar.archivos',$archivo->id)}}" ><i class="fa-solid fa-pen-to-square fa-lg text-warning" title="Actualizar archivo" aria-hidden="true"></i></a>
+
+                            <form action="{{route('eliminar.archivo',['id'=>$archivo->id]) }}" title="el" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="   border:none; cursor: pointer;"><i class="fa-solid fa-trash fa-lg text-danger" title="Eliminar archivo" aria-hidden="true"></i></button>
+                                   
+                            </form>
                            
-                            </td>
+                            </td> --}}
                        
             </tr>
                 @endforeach
@@ -70,18 +75,4 @@
 
 
 
-<script>
-    function previsualizarArchivo(archivoId) {
-        fetch(`/visualizar/archivo/${archivoId}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.url) {
-                    window.open(data.url, '_blank'); 
-                } else {
-                    alert('No se pudo cargar la vista previa.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    }
-    </script>
     
