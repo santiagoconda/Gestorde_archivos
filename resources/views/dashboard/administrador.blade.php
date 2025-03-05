@@ -38,7 +38,7 @@
                     <tr>
                         <td>{{$archivo->nombre_archivo}}</td>
                         <td>{{$archivo->tipo_archivo}}</td>
-                        <td>{{$archivo->users->name}}</td>
+                        <td>{{ optional ($archivo->users)->name}}</td>
                         <td>{{$archivo->fecha_subida}}</td>
                         
                         <td>{{$archivo->archivos->areas->nombre}}</td>

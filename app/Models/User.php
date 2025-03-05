@@ -48,9 +48,9 @@ class User extends Authenticatable
     }
 
     public function roles()
-{
-    return $this->hasMany(rol::class, 'rol_id');
-}
+    {
+    return $this->belongsTo(rol::class, 'rol_id');
+    }
 
     
 }

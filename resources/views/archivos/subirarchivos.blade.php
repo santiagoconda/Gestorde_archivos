@@ -21,13 +21,21 @@
             <form action="{{route('subir')}}" method="POST" enctype="multipart/form-data" class="formulariosubir">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" class="formularioinputs">
                 <div>
-                    <input type="text" placeholder="area" name="area_nombre" class="formularioinputs">
+                    <select class="form-selecciona" id="id_area" name="id_area" required>
+                        <option value="">Areas</option>
+                        @foreach ($areas as $item)
+                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                        @endforeach
+                    </select>
                    
                 </div>
+                <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf"  class="formularioinputs" required>
                 <div>
                     <input type="text" placeholder="descirpcion" name="archivo_descripcion" class="formularioinputs">
                 </div>
-                <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf"  class="formularioinputs" required>
+                <div>
+                    <input type="text" placeholder="ID" name="id_usuario" class="formularioinputs">
+                </div>
 
                 <button class="btnsubir" type="submit">Subir Archivo</button>
             </form>

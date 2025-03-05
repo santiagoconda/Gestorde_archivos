@@ -31,18 +31,11 @@
             </thead>
             <tbody>
                 @foreach($usuarios as $item) 
-
-                
                     <tr>
                         <td>{{$item->name}}</td>
                         <td>{{$item->email}}</td>
-                        <td>roles</td>
-                        {{-- <td>{{$item->roles->nombre}}</td> --}}
-                        
+                        <td>{{$item->roles->nombre}}</td>                        
                         {{-- <td>
-                            <a href="{{ route('descargar.archivos', $archivo->id) }}" title="Descargar archivo" class="icons"> <i class="fa fa-download fa-lg text-success" aria-hidden="true"></i></a>                     
-                            <a><i class="fa-solid fa-eye fa-lg text-primary" onclick="previsualizarArchivo({{ $archivo->id }})" title="Ver archivo" aria-hidden="true"></i></a>
-
                             <a href="{{route('editar.archivos',$archivo->id)}}" ><i class="fa-solid fa-pen-to-square fa-lg text-warning" title="Actualizar archivo" aria-hidden="true"></i></a>
 
                             <form action="{{route('eliminar.archivo',['id'=>$archivo->id]) }}" title="el" method="POST">

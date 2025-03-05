@@ -12,17 +12,15 @@ class authController extends Controller
 {
     public function index()
     {        
-        
         $roles = rol::all();
         return view('auth.login', compact('roles'));
     }
+    
     public function vistaresgistrar()
     {       
-       
         $roles = rol::all();
         return view('auth.registroUsuarios',compact('roles'));
     }
-
 
     public function registrarUsuarios(Request $request)
     {
@@ -45,31 +43,6 @@ class authController extends Controller
         return redirect('/dashboard');
     }
 
-
-    // public function login(Request $request)
-    // {
-    //     // dd($request);
-    //     $validate = $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required'
-    //     ]);
-    //     $user = User::where('email', $request->email)->first();
-    //     if($user){
-    //         if(Hash::check($request->password, $user->password)){
-    //             Auth::login($user);
-    //             $request->session()->regenerate();
-    //             return redirect()->route('ver.archivos');
-    //         }else{
-    //             return back()->withErrors(['password' => 'Contraseña incorrecta']);
-    //         }
-    //     }else{
-    //         return back()->withErrors([
-    //             'email' => 'El email no existe'
-    //         ])->withInput();
-    //     }
-    // }
-
-
     public function login(Request $request)
     {
         // dd($request);
@@ -87,6 +60,8 @@ class authController extends Controller
                         return redirect()->route('ver.archivos');
                     case 2:
                         return redirect()->route('tablas.archivos');
+                    case 3:
+                        return redirect()->route('planeacion.archivos');
                     default:
                     return redirect()->route('login'); 
 
@@ -101,26 +76,21 @@ class authController extends Controller
         }
     }
     
-    
     public function enviarCorreoResetPassword(Request $request){
         // dd($request->toArray());
         $request->validate([
             'email' => 'required|email|exists:users,email',
         ]);
         $response = Password::sendResetLink($request->only('email'));
-        // return $response == Password::RESET_LINK_SENT
-        // ? back()->with('status', 'Te hemos enviado un enlace para restablecer la contraseña.')
-        // : back()->withErrors(['email' => 'No podemos encontrar un usuario con ese correo.']);
+
         if ($response == Password::RESET_LINK_SENT) {
-            Log::info('Correo de restablecimiento enviado a: ' . $request->email);  // Log si el correo fue enviado
+            Log::info('Correo de restablecimiento enviado a: ' . $request->email);  
             return back()->with('status', 'Te hemos enviado un enlace para restablecer la contraseña.');
         } else {
-            Log::error('Error al enviar el correo de restablecimiento a: ' . $request->email);  // Log si hubo un error
+            Log::error('Error al enviar el correo de restablecimiento a: ' . $request->email); 
             return back()->withErrors(['email' => 'No podemos encontrar un usuario con ese correo.']);
         }
     }
-
-   
 
     public function mostrarFormularioReset(Request $request, $token=null){
         return view('auth.resetPassword')->with(
@@ -160,10 +130,8 @@ class authController extends Controller
     }
 
     public function traerUsuarios(){
-
-
-        // $usuarios = User::with('roles')->get();
-        $usuarios = User::all();
+        $usuarios = User::with('roles')->get();
+        // dd($usuarios->toArray());
         return $usuarios;
     }
 

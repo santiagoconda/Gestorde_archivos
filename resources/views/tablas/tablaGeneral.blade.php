@@ -20,6 +20,8 @@
 @section('content')
 
     <div class="container mt-4">
+        <h1>Archivos Generales</h1>
+
         <table id="tb_archivosgeneral" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
