@@ -101,6 +101,11 @@ class archivosController extends Controller
 
     }
 
+    public function Traerareas(){
+        $areas = Area::all();
+        return view('dashboard.areas');
+    }
+
     public function edit(string $id){
         $users = User::all();
         $Areas = area::all();
@@ -123,6 +128,7 @@ class archivosController extends Controller
     }
     
     public function actualizarDatos(Request $request)
+    
     {
         $area_id = $request->input('area_id');
         $archivo_id = $request->input('archivo_id');

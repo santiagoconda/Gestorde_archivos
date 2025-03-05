@@ -36,7 +36,7 @@ Route::get('/ver/archivos/general', function () {
 //tabla Planeacion
 Route::get('/ver/archivos/planeacion', function () {
     $archivosC = new archivosController();
-    $archivos = $archivosC->verArchivosFiltro(1); 
+    $archivos = $archivosC->verArchivosFiltro(2); 
     return view('tablas.planeacion', compact('archivos'));
 })->name('planeacion.archivos');
 
@@ -45,6 +45,8 @@ Route::get('/ver/archivos/planeacion', function () {
 // /tabla administracion
 Route::get('/dashboard', function () {
     $archivosC = new archivosController();
+
+    
     $archivos = $archivosC->verArchivos();
     return view('dashboard.administrador',compact('archivos'));
     })->name('ver.archivos');
@@ -57,6 +59,10 @@ Route::get('/usuarios',function(){
 
 
 
+route::get('/areas', function(){
+    return view('dashboard.areas');
+});
 
-
-
+route::get('/roles', function(){
+    return view('dashboard.creacionRoles');
+});
