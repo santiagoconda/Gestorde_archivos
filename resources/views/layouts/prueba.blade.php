@@ -38,21 +38,27 @@
                     Menú
                 </h4>
                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.archivos') }}">
-                    <i class="fas fa-calendar-plus me-2"></i> Inicio
+                    <i class="fa-solid fa-house"></i> Inicio
                 </a>
                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('añadir.usuarios') }}">
-                    <i class="fas fa-calendar-plus me-2"></i> Usuarios
+                    <i class="fa-solid fa-users"></i> Usuarios
                 </a>
                 
                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.usuarios') }}">
-                    <i class="fas fa-calendar-plus me-2"></i> Añadir ususarios
+                    <i class="fa-solid fa-user-plus"></i> Añadir ususarios
                 </a>
 
                 
                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('index') }}">
-                    <i class="fas fa-calendar-plus me-2"></i> Subir Archivos
+                    <i class="fa-solid fa-file-arrow-up"></i> Subir Archivos
                 </a>
-                
+                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('areas.crear') }}">
+                    <i class="fa-solid fa-user-plus"></i> Crear Area
+                </a>
+
+                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('crear.roles') }}">
+                    <i class="fa-solid fa-user-plus"></i> Crear Rol
+                </a>
             </div>
     
             <!-- Navbar para móviles -->
@@ -68,19 +74,27 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
 
-                                <a href="{{ route('ver.archivos') }}" class="nav-link active">
-                                    <i class="fas fa-home me-2"></i> Inicio
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.archivos') }}">
+                                    <i class="fa-solid fa-house"></i> Inicio
                                 </a>
                                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('añadir.usuarios') }}">
-                                    <i class="fas fa-calendar-plus me-2"></i> Usuarios
+                                    <i class="fa-solid fa-users"></i> Usuarios
                                 </a>
                                 
                                 <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('ver.usuarios') }}">
-                                    <i class="fas fa-calendar-plus me-2"></i> Añadir usuarios
+                                    <i class="fa-solid fa-user-plus"></i> Añadir ususarios
+                                </a>
+                
+                                
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('index') }}">
+                                    <i class="fa-solid fa-file-arrow-up"></i> Subir Archivos
+                                </a>
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('areas.crear') }}">
+                                    <i class="fa-solid fa-user-plus"></i> Crear Area
                                 </a>
 
-                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('index') }}">
-                                    <i class="fas fa-calendar-plus me-2"></i> Subir Archivos
+                                <a class="d-block py-2 px-3 sidebar-link"  href="{{ route('crear.roles') }}">
+                                    <i class="fa-solid fa-user-plus"></i> Crear Rol
                                 </a>
                            
                             

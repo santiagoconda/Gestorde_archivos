@@ -9,14 +9,32 @@
     align-items: center;
     gap: 15px;
 }
-
-.formularioinputs,
-.btnsubir{
-    width: 280px;
+/* .futbollibre{
+    width: 300px;
     height: 40px;
     border: none;
     border-radius: 8px;
     background-color: #032840;
+    color: white;
+
+} */
+.formularioinputs,
+
+.futbollibre{
+    width: 380px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #032840;
+}
+.btnsubir{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #032840;
+
 }
 .formularioinputs::placeholder,
 .btnsubir{

@@ -21,13 +21,28 @@ class archivosController extends Controller
 
         
     }
-    public function vistaEditarArchivos(){
-        return view('dashboard.editar');
+   
+    public function crearAreas(Request $request){
 
-        
+        // dd($request);
+        $request->validate([
+            'nombre' => 'required|string|',
+            'estado' => 'nullable|integer'
+        ]);
+        $areas=area::create([
+            'nombre' => $request->nombre,
+            'estado' => $request->estado ?? 1
+        ]);
+        return response()->json(['message' => 'Area creada con exito' , 'area' => $areas]);
+
     }
 
     public function guarDardatos(Request $request){
+        $user = auth()->user(); 
+        // dd($user->toArray());
+        if (!$user || !$user->roles || !$user->roles->crear) {
+            return redirect()->route('ver.archivos')->with('error', 'No tienes permiso para editar archivos.');
+        }
         // dd($request);
         $request->validate([
             'id_area' => 'required|string|max:255',
@@ -79,6 +94,7 @@ class archivosController extends Controller
     
     
     public function descargarArchivos($id){
+       
         $archivo = subir_archivo::findOrFail($id);
         $rutaArchivo = $archivo->ruta_archvo;
 
@@ -91,6 +107,12 @@ class archivosController extends Controller
     }
 
     public function eliminarArchivo(string $id){
+
+        $user = auth()->user(); 
+        // dd($user->toArray());
+        if (!$user || !$user->roles || !$user->roles->eliminar) {
+        return redirect()->route('ver.archivos')->with('error', 'No tienes permiso para eliminar archivos.');
+        }
       
         $archivo = subir_archivo::findOrFail($id);
         if($archivo){
@@ -101,12 +123,15 @@ class archivosController extends Controller
 
     }
 
-    public function Traerareas(){
-        $areas = Area::all();
-        return view('dashboard.areas');
-    }
+  
 
     public function edit(string $id){
+        $user = auth()->user(); 
+        // dd($user->toArray());
+        if (!$user || !$user->roles || !$user->roles->	actalizar) {
+            return redirect()->route('ver.archivos')->with('error', 'No tienes permiso para editar archivos.');
+        }
+        
         $users = User::all();
         $Areas = area::all();
         $Archv = subir_archivo::with(['users', 'archivos.areas',])->find($id);
@@ -130,6 +155,8 @@ class archivosController extends Controller
     public function actualizarDatos(Request $request)
     
     {
+        // dd($request);
+      
         $area_id = $request->input('area_id');
         $archivo_id = $request->input('archivo_id');
         $subir_archivo_id = $request->input('subir_archivo_id');

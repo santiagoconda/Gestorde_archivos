@@ -135,4 +135,25 @@ class authController extends Controller
         return $usuarios;
     }
 
+    public function crearRoles(Request $request){
+        // dd($request->toArray());
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'crear' => 'required|boolean',
+            'ver' => 'required|boolean',
+            'actualizar' => 'required|boolean',
+            'eliminar' => 'required|boolean',
+        ]);
+        $roles = rol::create([
+            'nombre'=>$request->input('nombre'),
+            'crear'=>$request->boolean('crear'),
+            'ver'=>$request->boolean('ver'),
+            'actalizar'=>$request->boolean('actualizar'),
+            'eliminar'=>$request->boolean('eliminar')
+        ]);
+        return response()->json(['message'=>'Rol creado exitosamente', 'roles'=>$roles]);
+
+
+    }
+
 }

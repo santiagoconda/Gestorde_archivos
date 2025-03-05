@@ -23,6 +23,14 @@ Route::delete('/eliminar/archivo/{id}',[archivosController::class,'eliminarArchi
 
 Route::get('/descargar/archivo/{id}', [archivosController::class, 'descargarArchivos'])->name('descargar.archivos');
 Route::get('/visualizar/archivo/{id}', [archivosController::class, 'visualizarArchivo'])->name('visualizar.archivos');
+
+
+//ruta para crear area
+Route::post('/crear/area',[archivosController::class,'crearAreas'])->name('crear.area');
+
+Route::post('/crear/rol',[authController::class,'crearRoles'])->name('crear.rol');
+
+
  
 
 
@@ -61,8 +69,8 @@ Route::get('/usuarios',function(){
 
 route::get('/areas', function(){
     return view('dashboard.areas');
-});
+})->name('areas.crear');
 
 route::get('/roles', function(){
     return view('dashboard.creacionRoles');
-});
+})->name('crear.roles');

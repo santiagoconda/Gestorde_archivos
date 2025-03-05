@@ -21,10 +21,10 @@
             <form action="{{route('subir')}}" method="POST" enctype="multipart/form-data" class="formulariosubir">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" class="formularioinputs">
                 <div>
-                    <select class="form-selecciona" id="id_area" name="id_area" required>
+                    <select class="form-selecciona futbollibre" id="id_area" name="id_area" required>
                         <option value="">Areas</option>
                         @foreach ($areas as $item)
-                            <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                            <option  value="{{ $item->id }}">{{ $item->nombre }}</option>
                         @endforeach
                     </select>
                    

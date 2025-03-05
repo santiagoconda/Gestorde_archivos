@@ -15,8 +15,10 @@
 <body>
     <div class="contenedor-formulario">
         <h2 class="titulo-formulario">Crear Nuevo Rol</h2>
-        
-        <form action="/guardar-rol" method="POST">
+
+        <form action="{{ route('crear.rol') }}" method="POST">
+            @csrf
+
             <!-- Campo para el nombre del rol -->
             <div class="form-group">
                 <label for="nombre">Nombre del Rol</label>
@@ -27,18 +29,15 @@
             <div class="form-group">
                 <label>Permisos</label>
                 <div class="permisos-container">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="permisos[]" value="crear"> Crear
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="permisos[]" value="ver"> Ver
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="permisos[]" value="actualizar"> Actualizar
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="permisos[]" value="eliminar"> Eliminar
-                    </label>
+                    @php
+                        $permisos = ['crear' => 'Crear', 'ver' => 'Ver', 'actualizar' => 'Actualizar', 'eliminar' => 'Eliminar'];
+                    @endphp
+                    @foreach ($permisos as $permiso => $label)
+                        <label class="checkbox-label">
+                            <input type="hidden" name="{{ $permiso }}" value="0"> 
+                            <input type="checkbox" name="{{ $permiso }}" value="1"> {{ $label }}
+                        </label>
+                    @endforeach
                 </div>
             </div>
 
@@ -49,5 +48,6 @@
         </form>
     </div>
 </body>
+
 @endsection
 </html>

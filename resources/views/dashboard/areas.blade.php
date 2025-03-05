@@ -15,21 +15,15 @@
 <body>
 
     <div class="contenedor-formulario">
-        <h2 class="titulo-formulario">Gestión de Áreas</h2>
+        <h2 class="titulo-formulario">Crear Areas</h2>
         
-        <form action="/guardar-area" method="POST">
+        <form action="{{route('crear.area')}} " method="POST">
+            @csrf
             <div class="form-group">
                 <label for="nombre">Nombre del Área</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese el nombre del área" required>
+                <input type="text" id="nombre" name="nombre" class="form-control"  required>
             </div>
 
-            <div class="form-group">
-                <label for="estado">Estado</label>
-                <select id="estado" name="estado" class="form-control" required>
-                    <option value="activo">Activo</option>
-                    <option value="inactivo">Inactivo</option>
-                </select>
-            </div>
 
             <div class="form-group">
                 <button type="submit" class="btn-enviar">Guardar</button>

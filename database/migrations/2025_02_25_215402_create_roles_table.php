@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->tinyInteger('estado')->default(1); 
+            $table->boolean('crear');
+            $table->boolean('ver');
+            $table->boolean('actalizar');
+            $table->boolean('eliminar');
+            $table->tinyInteger('estado')->default(1);
+
         });
     }
 
