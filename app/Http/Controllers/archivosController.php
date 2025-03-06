@@ -33,7 +33,7 @@ class archivosController extends Controller
             'nombre' => $request->nombre,
             'estado' => $request->estado ?? 1
         ]);
-        return response()->json(['message' => 'Area creada con exito' , 'area' => $areas]);
+        return view('dashboard.confirmacion');
 
     }
 
@@ -75,8 +75,7 @@ class archivosController extends Controller
         
 
 
-        return response()->json(['message' => 'Archivo subido exitosamente', 'archivo' => $subirArchivo]);
-    }
+        return view('dashboard.confirmacion');    }
 //    Funcion que trae todos los datos delos archivos
     public function verArchivos(){
         $archivos = subir_archivo::with('users','archivos.areas')->get();
@@ -91,6 +90,15 @@ class archivosController extends Controller
             })
             ->get();
     }
+// funcion para filtrar archivos, menos losque se le espesifican en elparametro
+    public function verArchivosAreas($excluirAreaIds = [2]) {
+        return subir_archivo::with('users', 'archivos.areas')
+            ->whereHas('archivos', function ($query) use ($excluirAreaIds) {
+                $query->whereNotIn('area_id', $excluirAreaIds);
+            })
+            ->get();
+    }
+    
     
     
     public function descargarArchivos($id){
@@ -111,14 +119,13 @@ class archivosController extends Controller
         $user = auth()->user(); 
         // dd($user->toArray());
         if (!$user || !$user->roles || !$user->roles->eliminar) {
-        return redirect()->route('ver.archivos')->with('error', 'No tienes permiso para eliminar archivos.');
+        return redirect()->route('welcome.alert')->with('error', 'No tienes permiso para eliminar archivos.');
         }
       
         $archivo = subir_archivo::findOrFail($id);
         if($archivo){
             $archivo->delete();
-            return redirect()->route('ver.archivos')->with('success','archivo eliminado correctamente');
-        }
+            return view('dashboard.confirmacion');        }
         return response()->json(['message'=>'archivo no encotrado']);
 
     }
@@ -129,13 +136,28 @@ class archivosController extends Controller
         $user = auth()->user(); 
         // dd($user->toArray());
         if (!$user || !$user->roles || !$user->roles->	actalizar) {
-            return redirect()->route('ver.archivos')->with('error', 'No tienes permiso para editar archivos.');
+            return redirect()->route('welcome.alert')->with('error', 'No tienes permiso para editar archivos.');
         }
         
         $users = User::all();
         $Areas = area::all();
         $Archv = subir_archivo::with(['users', 'archivos.areas',])->find($id);
      return view('dashboard.editar', compact('Archv','users','Areas'));
+
+    }
+
+    
+    public function editarconPermisos(string $id){
+        $user = auth()->user(); 
+        // dd($user->toArray());
+        if (!$user || !$user->roles || !$user->roles->	actalizar) {
+            return redirect()->route('welcome.alert')->with('error', 'No tienes permiso para editar archivos.');
+        }
+        
+        $users = User::all();
+        $Areas = area::all();
+        $Archv = subir_archivo::with(['users', 'archivos.areas',])->find($id);
+     return view('archivos.editar', compact('Archv','users','Areas'));
 
     }
 
@@ -194,7 +216,7 @@ class archivosController extends Controller
             ]);
         }
     
-        return response()->json(['message' => 'Datos actualizados exitosamente']);
+        return view('dashboard.confirmacion');   
     }
     
    

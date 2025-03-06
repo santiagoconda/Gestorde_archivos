@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    @extends('layouts.navarprincipal')
+    @extends('layouts.navtablas')
 @section('content')
 
     <div class="container mt-4">
@@ -26,7 +26,9 @@
                 <tr>
                     <th>Nombre del Archivo</th>
                     <th>Tipo de Archivo</th>
+                    <th>Nombre de Usuario</th>
                     <th>Fecha</th>
+                    <th>Descripcion</th>
                     <th>Area</th>
                     <th>Acciones</th>
                 </tr>
@@ -38,15 +40,22 @@
                     <tr>
                         <td>{{$archivo->nombre_archivo}}</td>
                         <td>{{$archivo->tipo_archivo}}</td>
+                        <td>{{ optional ($archivo->users)->name}}</td>
                         <td>{{$archivo->fecha_subida}}</td>
-                        
+                        <td>{{$archivo->archivos->descripcion}}</td>
                         <td>{{$archivo->archivos->areas->nombre}}</td>
                         <td>
                             <a href="{{ route('descargar.archivos', $archivo->id) }}" title="Descargar archivo" class="icons"> <i class="fa fa-download fa-lg text-success" aria-hidden="true"></i></a>                     
                             <a><i class="fa-solid fa-eye fa-lg text-primary" onclick="previsualizarArchivo({{ $archivo->id }})" title="Ver archivo" aria-hidden="true"></i></a>
-                            {{-- <a href="" ><i class="fa-solid fa-pen-to-square fa-lg text-warning" title="Actualizar archivo" aria-hidden="true"></i></a>
-                            <a href=""  ><i class="fa-solid fa-trash fa-lg text-danger" title="Eliminar archivo" aria-hidden="true"></i></a> --}}
-                             
+
+                            <a href="{{route('permisos.editar',$archivo->id)}}" ><i class="fa-solid fa-pen-to-square fa-lg text-warning" title="Actualizar archivo" aria-hidden="true"></i></a>
+
+                            <form action="{{route('eliminar.archivo',['id'=>$archivo->id]) }}" title="el" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="   border:none; cursor: pointer;"><i class="fa-solid fa-trash fa-lg text-danger" title="Eliminar archivo" aria-hidden="true"></i></button>
+                                   
+                            </form>
                            
                             </td>
                        

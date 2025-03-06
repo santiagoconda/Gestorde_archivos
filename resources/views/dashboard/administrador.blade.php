@@ -27,6 +27,7 @@
                     <th>Tipo de Archivo</th>
                     <th>Nombre de Usuario</th>
                     <th>Fecha</th>
+                    <th>Descripcion</th>
                     <th>Area</th>
                     <th>Acciones</th>
                 </tr>
@@ -40,8 +41,9 @@
                         <td>{{$archivo->tipo_archivo}}</td>
                         <td>{{ optional ($archivo->users)->name}}</td>
                         <td>{{$archivo->fecha_subida}}</td>
-                        
+                        <td>{{$archivo->archivos->descripcion}}</td>
                         <td>{{$archivo->archivos->areas->nombre}}</td>
+                        
                         <td>
                             <a href="{{ route('descargar.archivos', $archivo->id) }}" title="Descargar archivo" class="icons"> <i class="fa fa-download fa-lg text-success" aria-hidden="true"></i></a>                     
                             <a><i class="fa-solid fa-eye fa-lg text-primary" onclick="previsualizarArchivo({{ $archivo->id }})" title="Ver archivo" aria-hidden="true"></i></a>

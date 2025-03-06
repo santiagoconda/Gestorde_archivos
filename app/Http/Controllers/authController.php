@@ -59,11 +59,13 @@ class authController extends Controller
                     case 1:
                         return redirect()->route('ver.archivos');
                     case 2:
-                        return redirect()->route('tablas.archivos');
-                    case 3:
                         return redirect()->route('planeacion.archivos');
+                    case 3:
+                        return redirect()->route('docente.archivos');
+                    case 4:
+                        return redirect()->route('calidad.archivos');
                     default:
-                    return redirect()->route('login'); 
+                    return redirect()->route('tablas.archivos'); 
 
                 }
             }else{
@@ -151,8 +153,7 @@ class authController extends Controller
             'actalizar'=>$request->boolean('actualizar'),
             'eliminar'=>$request->boolean('eliminar')
         ]);
-        return response()->json(['message'=>'Rol creado exitosamente', 'roles'=>$roles]);
-
+        return view('dashboard.confirmacion');
 
     }
 

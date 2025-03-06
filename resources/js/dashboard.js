@@ -47,3 +47,27 @@ new DataTable('#tb_usuers', {
 
     
 });  
+new DataTable('#tb_archivosDocentes', {
+    scrollX: true,
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/2.1.3/i18n/es-ES.json',
+        
+    },
+    columnDefs: [
+        {orderable: false, targets:[4]}
+    ],
+
+    
+});  
+new DataTable('#tb_archivosCalidad', {
+    scrollX: true,
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/2.1.3/i18n/es-ES.json',
+        
+    },
+    columnDefs: [
+        {orderable: false, targets:[4]}
+    ],
+
+    
+});  

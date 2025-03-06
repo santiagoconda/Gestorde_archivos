@@ -24,42 +24,38 @@
     
             <h2 class="text-center mb-4">Editar Archivo</h2>
     
-            <!-- Campos ocultos para pasar los IDs -->
+            
             <input type="hidden" name="area_id" value="{{ $Archv->archivos->areas->id }}">
             <input type="hidden" name="archivo_id" value="{{ $Archv->archivos->id }}">
             <input type="hidden" name="subir_archivo_id" value="{{ $Archv->id }}">
     
-            <!-- Selección de área -->
             <label for="area_nombre">Área</label>
-            <select name="area_nombre" id="area_nombre" required>
+            <select name="area_nombre" id="area_nombre" class="selecionararea" required>
                 <option value="{{ $Archv->archivos->areas->nombre }}" selected>{{ $Archv->archivos->areas->nombre }}</option>
                 @foreach ($Areas as $item)
-                    <option value="{{ $item->nombre }}">{{ $item->nombre }}</option>
+                    <option value="{{ $item->nombre }}"  >{{ $item->nombre }}</option>
                 @endforeach
             </select>
     
-            <!-- Campo de descripción -->
+           
             <label for="archivo_descripcion">Descripción</label>
             <input class="inputs" type="text" name="archivo_descripcion" value="{{ $Archv->archivos->descripcion }}" required>
     
-            <!-- Archivo actual -->
             <label for="archivo_actual">Archivo Actual</label>
-            <input type="text" class="form-control" value="{{ $Archv->nombre_archivo }}" readonly>
+            <input type="text" class="form-control selecionararea" value="{{ $Archv->nombre_archivo }}" readonly>
     
-            <!-- Subir un nuevo archivo -->
             <label for="archivo">Subir Nuevo Archivo</label>
             <input type="file" class="form-control" id="archivo" name="archivo" accept="application/pdf,image/*">
     
-            <!-- Usuario relacionado -->
             <label for="usuarios_id">Usuario</label>
-            <select name="usuarios_id" id="usuarios_id" required>
-                <option value="{{ $Archv->users->name }}" selected>{{$Archv->users->name }}</option>
+            <select name="usuarios_id" id="usuarios_id" class="selecionararea" required>
+                <option value="{{ $Archv->users->id }}"  selected>{{$Archv->users->name }}</option>
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>
     
-            <button class="btn" type="submit">Actualizar Archivo</button>
+            <button  class="btnupdate" type="submit">Actualizar Archivo</button>
         </form>
     </div>
     
